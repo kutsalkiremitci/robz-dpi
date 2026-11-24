@@ -292,6 +292,19 @@ export default {
   'error.engine-missing@linux': 'Required system tools are missing: systemd, nftables and polkit (pkexec) must be installed.',
   'error.access-denied@linux': 'The system did not allow this action.',
   'error.conflict-stop-failed@linux': 'The other tool could not be stopped. Try closing it yourself.',
+  'error.uninstall-failed@linux':
+    'The app could not be uninstalled. Try removing it with your package manager (sudo apt remove robz-dpi or sudo dnf remove robz-dpi).',
+
+  // The AppImage on Linux: "key@appimage" (the app can uninstall itself).
+  'settings.uninstall.desc@appimage':
+    'Completely removes the app (the AppImage file), its background part and your settings from this computer.',
+  'dialog.uninstall.body@appimage':
+    'The AppImage file, the background part (the systemd unit and the rules) and your settings are deleted from this computer. The system may ask for the administrator password. The app then closes.',
+  // A system package the app can uninstall itself on Linux (.rpm, .deb): "key@package".
+  'settings.uninstall.desc@package':
+    'Completely removes the app (its package), its background part and your settings from this computer.',
+  'dialog.uninstall.body@package':
+    "The app's package, the background part (the systemd unit and the rules) and your settings are deleted from this computer. The system asks for the administrator password. The app then closes.",
 
   // Portable version: "key@portable".
   'settings.uninstall.desc@portable':

@@ -292,6 +292,19 @@ export default {
   'error.engine-missing@linux': 'Gerekli sistem araçları eksik: systemd, nftables ve polkit (pkexec) kurulu olmalı.',
   'error.access-denied@linux': 'Sistem bu işleme izin vermedi.',
   'error.conflict-stop-failed@linux': 'Diğer araç durdurulamadı. Elle kapatmayı dene.',
+  'error.uninstall-failed@linux':
+    'Uygulama kaldırılamadı. Paket yöneticinle kaldırmayı dene (sudo apt remove robz-dpi ya da sudo dnf remove robz-dpi).',
+
+  // Linux'ta AppImage: "anahtar@appimage" (uygulama kendini kaldırabilir).
+  'settings.uninstall.desc@appimage':
+    'Uygulamayı (AppImage dosyasını), arka planda çalışan parçasını ve ayarlarını bu bilgisayardan tümüyle siler.',
+  'dialog.uninstall.body@appimage':
+    'AppImage dosyası, arka planda çalışan parça (systemd birimi ve kurallar) ve ayarların bu bilgisayardan silinir. Sistem yönetici parolası isteyebilir. Ardından uygulama kapanır.',
+  // Linux'ta uygulamanın kendi kaldırabildiği sistem paketi (.rpm, .deb): "anahtar@package".
+  'settings.uninstall.desc@package':
+    'Uygulamayı (paketini), arka planda çalışan parçasını ve ayarlarını bu bilgisayardan tümüyle siler.',
+  'dialog.uninstall.body@package':
+    'Uygulamanın paketi, arka planda çalışan parça (systemd birimi ve kurallar) ve ayarların bu bilgisayardan silinir. Sistem yönetici parolası ister. Ardından uygulama kapanır.',
 
   // Taşınabilir sürüm: "anahtar@portable".
   'settings.uninstall.desc@portable':
