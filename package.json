@@ -1,7 +1,7 @@
 {
   "name": "robz-dpi",
   "productName": "Robz DPI",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "description": "Yalnız seçtiğiniz sitelerde çalışan, Windows için açık kaynak DPI aracı.",
   "license": "MIT",

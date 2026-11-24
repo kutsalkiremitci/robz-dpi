@@ -7,7 +7,7 @@
 # Windows'ta kullanılmaz: orada motor uygulamanın kendi exe'sidir.
 [package]
 name = "robzdpi-engine"
-version = "0.5.0"
+version = "0.6.0"
 description = "Robz DPI motoru (Linux)"
 license = "MIT"
 repository = "https://github.com/kutsalkiremitci/robz-dpi"

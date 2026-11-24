@@ -2,6 +2,17 @@
 
 Her başlık bir sürümdür; sürüm iş akışı GitHub'daki sürüm notunu buradan alır.
 
+## 0.6.0
+
+Linux'ta tek adımda kaldırma.
+
+- **Linux'ta "Robz DPI'ı kaldır" artık uygulamayı da kaldırır** (Windows'taki gibi). `.deb` ve `.rpm`'de paket tek
+  yönetici onayıyla kaldırılır; paketin kaldırma betiği motoru da siler. AppImage'da önce motor kaldırılır, sonra
+  AppImage dosyası ve ayarlar silinir; dosyayı Robz Hub kurduysa onun klasörü ve uygulama menüsü girişi de silinir.
+  Onay verilmezse hiçbir şey silinmez. Katkı: [@bberkay](https://github.com/bberkay)
+  ([#2](https://github.com/kutsalkiremitci/robz-dpi/pull/2)).
+- Paket kaldırma yalnız uygulamanın kendi paketiyle (`robz-dpi`) sınırlıdır.
+
 ## 0.5.0
 
 Site listesi ve hariç tutulan siteler.

@@ -409,7 +409,12 @@ fn system_program(name: &str) -> Option<PathBuf> {
     ["/usr/bin", "/bin", "/usr/sbin", "/sbin"].iter().map(|dir| Path::new(dir).join(name)).find(|path| path.is_file())
 }
 
+/// Uygulamanın .deb ve .rpm paketinin adı (tauri.linux.conf.json'daki mainBinaryName).
+#[cfg_attr(not(target_os = "linux"), allow(dead_code))]
+const OWN_PACKAGE: &str = "robz-dpi";
+
 /// Paket adı mı: yalnız paket adlarında geçen karakterler (yönetici olarak çalışacak komuta argüman olur).
+#[cfg_attr(not(target_os = "linux"), allow(dead_code))]
 fn plain_package_name(name: &str) -> bool {
     name.starts_with(|c: char| c.is_ascii_alphanumeric())
         && name.chars().all(|c| c.is_ascii_alphanumeric() || matches!(c, '.' | '_' | '+' | '-'))
@@ -463,7 +468,9 @@ pub fn system_package() -> Option<(PackageKind, &'static str)> {
             }
             let rpm = || owner("rpm", &["-qf", "--qf", "%{NAME}\n"], rpm_owner).map(|name| (PackageKind::Rpm, name));
             let deb = || owner("dpkg", &["-S"], dpkg_owner).map(|name| (PackageKind::Deb, name));
-            rpm().or_else(deb)
+            // Yalnız uygulamanın kendi paketi kaldırılır. Program başka bir paketin dosyası olarak çalışıyorsa (elle
+            // kopyalanmış bir derleme gibi) o paket yönetici onayıyla kaldırılmaz; o zaman paket yokmuş gibi davranılır.
+            rpm().or_else(deb).filter(|(_, name)| name == OWN_PACKAGE)
         })
         .as_ref()
         .map(|(kind, name)| (*kind, name.as_str()))
